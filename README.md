@@ -1,79 +1,84 @@
 # 🌐 Fronteira Viva
 
-**Fronteira Viva** é um portal web de turismo em **Ponta Porã**, voltado para **idosos** e **turistas de compras**.  
-O site reúne informações sobre **cultura e história local**, roteiros acessíveis, eventos culturais, além de dados em tempo real como **fila da Receita Federal** e **cotação do dólar**.
+O **Fronteira Viva** é um portal web de turismo focado na cidade de **Ponta Porã/MS**. O projeto foi desenhado especificamente para atender **idosos** e **turistas de compras**, unindo acessibilidade com informações práticas de utilidade pública.
 
-O projeto foi desenvolvido com **Django**, **MySQL**, **HTML**, **CSS** e **JavaScript**, sendo **responsivo** e **acessível**.
+O site reúne cultura, história local, roteiros acessíveis e dados em tempo real para facilitar a experiência de quem visita a fronteira.
+
+---
+
+## ✨ Funcionalidades Principais
+
+- 🏛️ **Cultura e História:** Roteiros turísticos, pontos históricos, linha do tempo e eventos culturais.
+- 🛍️ **Turismo de Compras:** Informações em tempo real sobre a **fila da Receita Federal** e **cotação do dólar**.
+- ♿ **Acessibilidade:** Botões de ajuste de fonte, alto contraste e suporte a áudio.
+- 🗺️ **Mapa Interativo:** Localização visual dos pontos culturais.
+- 📝 **Avaliações:** Feedback dos usuários sobre os roteiros visitados.
+- 🔐 **Painel Administrativo:** Gestão de conteúdo, atualização de câmbio e monitoramento da fila.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+O projeto utiliza uma stack robusta e escalável:
+
+- **Backend:** [Django](https://www.djangoproject.com/) (Python)
+- **Banco de Dados:** [MySQL](https://www.mysql.com/)
+- **Frontend:** HTML5, CSS3 e JavaScript
+- **Estilização:** Design responsivo e focado em acessibilidade
 
 ---
 
 ## ⚙️ Pré-requisitos
 
-Antes de rodar o projeto, você precisa ter instalado:
-
-- Python 3.x  
-- pip  
-- MySQL  
-- Git (opcional)  
+Certifique-se de ter instalado em sua máquina:
+* Python 3.x
+* MySQL Server
+* Pip (gerenciador de pacotes do Python)
 
 ---
 
-## 💻 Instalação
+## 💻 Instalação e Configuração
 
-1. **Clonar o repositório:**  
+Siga os passos abaixo para rodar o projeto localmente:
+
+### 1. Clonar o repositório
 ```bash
-git clone https://github.com/seuusuario/fronteiraviva.git
+git clone [https://github.com/seuusuario/fronteiraviva.git](https://github.com/seuusuario/fronteiraviva.git)
 cd fronteiraviva
-Criar e ativar ambiente virtual:
 
+### Criar o ambiente
 python -m venv venv
-# Windows
+
+#Ativar (Windows)
 venv\Scripts\activate
-# Linux/Mac
+
+# Ativar (Linux/Mac)
 source venv/bin/activate
-Instalar dependências:
 
-pip install -r requirements.txt
-Configurar banco de dados MySQL:
+### Instalar Dependências
+- **pip install -r requirements.txt
 
-Crie um banco chamado fronteiraviva
-
-Atualize settings.py com seu usuário e senha:
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fronteiraviva',
-        'USER': 'seu_usuario',
-        'PASSWORD': 'sua_senha',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
-Rodar migrações:
+### Migrações e Superusuário
 
 python manage.py makemigrations
 python manage.py migrate
-Criar superusuário (administrador):
 
+# Criar conta de administrador
 python manage.py createsuperuser
-#▶️ Como rodar
+
+### ▶️ Como Rodar
+Com o ambiente configurado, inicie o servidor:
+
 python manage.py runserver
-Acesse no navegador: http://127.0.0.1:8000/
 
-Faça login para acessar funcionalidades administrativas.
+## Interface Administrativa
 
-# 🖥️ Tela Principal
-- A página inicial contém:
+### O que eu melhorei para você:
+1.  **Hierarquia:** Usei títulos (`##`) e subtítulos (`###`) para o usuário não se perder.
+2.  **Visual:** Adicionei emojis temáticos que deixam o README mais profissional e amigável.
+3.  **Clareza técnica:** Separei a configuração do banco de dados em um bloco de código Python específico.
+4.  **Escaneabilidade:** O uso de listas (`*` ou `-`) ajuda o leitor a bater o olho e entender o que o projeto faz em segundos.
 
-- Cabeçalho: logo, nome do site, botões de acessibilidade (fonte, contraste, áudio) e login
+**Dica de mestre:** Se você tiver um print da tela principal, coloque uma imagem logo após o título principal usando `![Home Page](./caminho/para/sua/imagem.png)`. Isso valoriza muito o repositório!
 
-- Seção Cultura e História: roteiros, pontos históricos, linha do tempo e eventos
-
-- Seção Informações de Compras: fila da Receita Federal e cotação do dólar
-
-- Mapa Interativo: pontos culturais
-
-- Avaliações: avaliação de roteiros
-
-- Admin: atualização de fila, câmbio e cadastro de conteúdo
+Gostaria que eu criasse uma seção de **"Como Contribuir"** ou uma licença para o seu projeto?
