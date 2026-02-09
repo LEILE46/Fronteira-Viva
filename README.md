@@ -42,7 +42,7 @@ Certifique-se de ter instalado em sua máquina:
 Siga os passos abaixo para rodar o projeto localmente:
 
 ### 1. Clonar o repositório
-```bash
+
 git clone [https://github.com/seuusuario/fronteiraviva.git](https://github.com/seuusuario/fronteiraviva.git)
 cd fronteiraviva
 
@@ -71,14 +71,4 @@ Com o ambiente configurado, inicie o servidor:
 
 python manage.py runserver
 
-## Interface Administrativa
 
-### O que eu melhorei para você:
-1.  **Hierarquia:** Usei títulos (`##`) e subtítulos (`###`) para o usuário não se perder.
-2.  **Visual:** Adicionei emojis temáticos que deixam o README mais profissional e amigável.
-3.  **Clareza técnica:** Separei a configuração do banco de dados em um bloco de código Python específico.
-4.  **Escaneabilidade:** O uso de listas (`*` ou `-`) ajuda o leitor a bater o olho e entender o que o projeto faz em segundos.
-
-**Dica de mestre:** Se você tiver um print da tela principal, coloque uma imagem logo após o título principal usando `![Home Page](./caminho/para/sua/imagem.png)`. Isso valoriza muito o repositório!
-
-Gostaria que eu criasse uma seção de **"Como Contribuir"** ou uma licença para o seu projeto?
