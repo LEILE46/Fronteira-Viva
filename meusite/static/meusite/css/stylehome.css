@@ -238,3 +238,47 @@ footer {
     margin-top: 40px;
     font-size: 0.9rem;
 }
+.audio-acessibilidade {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border-left: 5px solid #28a745; 
+}
+
+.player-voz {
+    width: 100%; 
+    height: 50px; 
+    margin-top: 5px;
+}
+.btn-ouvir {
+    background-color: #2c3e50; /* Cor escura elegante */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+    transition: background 0.3s ease;
+    z-index: 10; /* Garante que fique sobre outros elementos */
+}
+
+.btn-ouvir:hover {
+    background-color: #34495e;
+    transform: scale(1.02);
+}
+
+.icone-som {
+    font-size: 1.2rem;
+}
+
+/* Garante visibilidade no Alto Contraste */
+.alto-contraste .btn-ouvir {
+    background-color: #ffff00 !important;
+    color: #000 !important;
+    border: 2px solid #000;
+}

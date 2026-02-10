@@ -27,7 +27,9 @@ urlpatterns = [
     path('', views.home, name='home'),
 
  
-    path('cadastro/', views.cadastro, name='cadastro'),
+    path('cadastro/', views.cadastro_view, name='cadastro'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
     path('accounts/', include('django.contrib.auth.urls')), 
     path('publicar/', views.publicar_historia, name='publicar_historia'),
 

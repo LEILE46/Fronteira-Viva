@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Entrar - Fronteira Viva</title>
+    <link rel="stylesheet" href="{% static 'meusite/css/style_login.css' %}">
+</head>
+<body class="corpo-login">
+    <div class="login-container">
+        <h2>Acesse sua Conta</h2>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alerta-erro">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="campo">
+                <label for="username">Usuário:</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+            <div class="campo">
+                <label for="password">Senha:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <button type="submit" class="btn-acao">ENTRAR</button>
+        </form>
+
+        <div class="links-ajuda">
+            <p>Novo por aqui? <a href="{% url 'cadastro' %}">Crie sua conta</a></p>
+            <a href="{% url 'home' %}">Esqueceu a senha?</a>
+        </div>
+    </div>
+</body>
+</html>
