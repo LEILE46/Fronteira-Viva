@@ -1,2 +1,74 @@
-# Fronteira-Viva
-Fronteira Viva é um portal web que une cultura e história local, com foco em idosos, e informações essenciais para turistas de compras, como cotação do dólar e status da fila da Receita Federal, promovendo um turismo acessível, informativo e integrado na fronteira.
+# 🌐 Fronteira Viva
+
+O **Fronteira Viva** é um portal web de turismo focado na cidade de **Ponta Porã/MS**. O projeto foi desenhado especificamente para atender **idosos** e **turistas de compras**, unindo acessibilidade com informações práticas de utilidade pública.
+
+O site reúne cultura, história local, roteiros acessíveis e dados em tempo real para facilitar a experiência de quem visita a fronteira.
+
+---
+
+## ✨ Funcionalidades Principais
+
+- 🏛️ **Cultura e História:** Roteiros turísticos, pontos históricos, linha do tempo e eventos culturais.
+- 🛍️ **Turismo de Compras:** Informações em tempo real sobre a **fila da Receita Federal** e **cotação do dólar**.
+- ♿ **Acessibilidade:** Botões de ajuste de fonte, alto contraste e suporte a áudio.
+- 🗺️ **Mapa Interativo:** Localização visual dos pontos culturais.
+- 📝 **Avaliações:** Feedback dos usuários sobre os roteiros visitados.
+- 🔐 **Painel Administrativo:** Gestão de conteúdo, atualização de câmbio e monitoramento da fila.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+O projeto utiliza uma stack robusta e escalável:
+
+- **Backend:** [Django](https://www.djangoproject.com/) (Python)
+- **Banco de Dados:** [MySQL](https://www.mysql.com/)
+- **Frontend:** HTML5, CSS3 e JavaScript
+- **Estilização:** Design responsivo e focado em acessibilidade
+
+---
+
+## ⚙️ Pré-requisitos
+
+Certifique-se de ter instalado em sua máquina:
+* Python 3.x
+* MySQL Server
+* Pip (gerenciador de pacotes do Python)
+
+---
+
+## 💻 Instalação e Configuração
+
+Siga os passos abaixo para rodar o projeto localmente:
+
+### 1. Clonar o repositório
+
+git clone [https://github.com/seuusuario/fronteiraviva.git](https://github.com/seuusuario/fronteiraviva.git)
+cd fronteiraviva
+
+### Criar o ambiente
+python -m venv venv
+
+#Ativar (Windows)
+venv\Scripts\activate
+
+# Ativar (Linux/Mac)
+source venv/bin/activate
+
+### Instalar Dependências
+- **pip install -r requirements.txt
+
+### Migrações e Superusuário
+
+python manage.py makemigrations
+python manage.py migrate
+
+# Criar conta de administrador
+python manage.py createsuperuser
+
+### ▶️ Como Rodar
+Com o ambiente configurado, inicie o servidor:
+
+python manage.py runserver
+
+
