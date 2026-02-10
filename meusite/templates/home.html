@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fronteira Viva - Ponta Porã</title>
+    <link rel="stylesheet" href="{% static 'meusite/css/stylehome.css' %}">
+</head>
+<body>
+ 
+<header>
+    <div class="header-container">
+        <div></div>
+        <div class="logo-area">
+            <img src="fronteira.png" alt="Logo Fronteira Viva" class="site-logo">
+            <h1>FRONTEIRA VIVA</h1>
+        </div>
+        <div class="header-right">
+            <div id="relogio" class="relogio-digital">00:00:00</div>
+        </div>
+    </div>
+ 
+    <nav class="menu">
+        <button onclick="trocarTela('cultura')">Cultura</button>
+        <button onclick="trocarTela('historias')">História</button>
+        <button onclick="trocarTela('cambio')">Câmbio</button>
+        <button onclick="trocarTela('login')">Login</button>
+        <button onclick="trocarTela('entrar')">Entrar</button>
+       
+    </nav>
+</header>
+ 
+<main>
+    <section id="cultura" class="tela ativa">
+        <h2>Cultura e Agricultura Detalhada</h2>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800" alt="Plantação de Soja">
+            <div class="card-content">
+                <h3>O Gigante do Agronegócio</h3>
+                <p>Ponta Porã se destaca como um dos maiores produtores de grãos do Brasil. Abaixo, detalhamos as culturas que sustentam nossa região:</p>
+               
+                <div class="detalhes-agricolas">
+                    <p><strong>Soja (A Principal Riqueza):</strong> É o carro-chefe da economy local. Ocupando a maior área plantada do município, Ponta Porã colhe anualmente mais de 800 mil toneladas, figurando no TOP 20 nacional. É a base para exportações e sustenta toda a cadeia logística da fronteira.</p>
+                    <p><strong>Milho Safrinha:</strong> Cultivado logo após a colheita da soja, o milho de segunda safra aproveita a fertilidade do solo e o regime de chuvas. É essencial para a produção de ração animal e para o abastecimento das indústrias de bioenergia.</p>
+                    <p><strong>Trigo e Cereais de Inverno:</strong> Devido à altitude elevada (média de 650m) e ao clima mais ameno, somos um dos raros polos triticultores de Mato Grosso do Sul. O trigo é fundamental na rotação de culturas, mantendo o solo produtivo e protegido nos meses frios.</p>
+                    <p><strong>Cana-de-Açúcar:</strong> Com a instalação de usinas modernas na região, a cana se tornou uma cultura estratégica para a produção de etanol e açúcar, diversificando a matriz econômica e gerando empregos industriais.</p>
+                    <p><strong>Silvicultura (Eucalipto):</strong> A produção de florestas plantadas cresce rapidamente para atender a demanda das indústrias de celulose e biomassa, aproveitando áreas estrategicamente para uma produção sustentável.</p>
+                    <p><strong>Erva-Mate:</strong> A cultura que deu origem à cidade. Ponta Porã mantém a tradição dos ervais nativos e cultivados, produzindo a matéria-prima para o Tereré, símbolo máximo da integração cultural entre Brasil e Paraguai.</p>
+                    <p><strong>Mandioca e Feijão:</strong> Culturas fundamentais da agricultura familiar e segurança alimentar. Fortalecem as indústrias locais de fécula e garantem o abastecimento do consumo regional nas cidades da fronteira.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section id="historias" class="tela">
+        <h2>Nossa Trajetória</h2>
+        <p class="instrucao">Clique nos temas para ler a história detalhada:</p>
+        <div class="lista-detalhada">
+            <details>
+                <summary>As Raízes Indígenas</summary>
+                <div class="detalhe-conteudo">
+                    <p>Muito antes da chegada dos colonizadores, a vasta região que hoje compreende Ponta Porã era o territory ancestral dos povos Guarani, especificamente as etnias <strong>Caiuá e Nhandeva</strong>. Estes povos viviam em comunidades organizadas conhecidas como "Tekoha", fundamentadas em uma profunda conexão espiritual com a terra.</p>
+                    <p>Sua influência permanece viva no DNA da cidade através da culinária, no uso cotidiano de palavras guaranis e, principalmente, no conhecimento sobre a erva-mate, que eles já colhiam e utilizavam em rituais muito antes do comércio global existir.</p>
+                </div>
+            </details>
+            <details>
+                <summary>O Ciclo da Erva-Mate (Punta Porá)</summary>
+                <div class="detalhe-conteudo">
+                    <p>Durante o século XIX, a região tornou-se o epicentro da exploração da erva-mate nativa, o "ouro verde" da época. A cidade começou a ganhar forma como um acampamento de <strong>carreteiros</strong> — homens que conduziam enormes carretas puxadas por bois, transportando a erva das matas para os portos e centros de comércio.</p>
+                    <p>O nome <strong>"Punta Porá"</strong> surgiu originalmente do Guarani, significando "Ponta Bonita". Era uma referência a uma elevação de campo que se destacava na paisagem, servindo como ponto de referência e descanso para os viajantes que atravessavam a fronteira.</p>
+                </div>
+            </details>
+            <details>
+                <summary>A Guerra e a Fronteira (1870)</summary>
+                <div class="detalhe-conteudo">
+                    <p>A <strong>Guerra do Paraguai (1864–1870)</strong> foi o evento divisor de águas para a soberania local. Antes do conflito, a área era intensamente disputada e majoritariamente ocupada por paraguaios. Com o fim da guerra e a assinatura do Tratado de Limites em 1872, Ponta Porã foi definitivamente reconhecida como território brasileiro.</p>
+                    <p>Para garantir a posse desta fronteira estratégica, o governo brasileiro incentivou a vinda de militares e migrantes de Minas Gerais e do Rio Grande do Sul, iniciando um processo de colonização que moldou o perfil miscigenado e resiliente da nossa população atual.</p>
+                </div>
+            </details>
+            <details>
+                <summary>A Emancipação de 1912</summary>
+                <div class="detalhe-conteudo">
+                    <p>A autonomia política foi uma conquista histórica. Em <strong>18 de julho de 1912</strong>, através do Decreto Estadual nº 617, Ponta Porã foi oficialmente emancipada de Bela Vista. A instalação do município ocorreu um ano depois, em 1913, com a posse do primeiro prefeito, Ponciano de Mattos Pereira.</p>
+                </div>
+            </details>
+            <details>
+                <summary>Duas Nações, Uma Alma</summary>
+                <div class="detalhe-conteudo">
+                    <p>Ponta Porã possui uma característica única no mundo: a <strong>Fronteira Seca</strong>. Separada de Pedro Juan Caballero apenas por uma avenida, a convivência entre brasileiros e paraguaios criou uma identidade binacional sem igual.</p>
+                    <p>Essa simbiose é vista no <strong>Portunhol</strong> falado nas ruas, no hábito sagrado do Tereré que une as duas nações no fim da tarde, e em uma economia compartilhada.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+ 
+    <section id="cambio" class="tela">
+        <h2>Câmbio na Fronteira</h2>
+        <div class="tabela-cambio">
+            <div class="item-cambio"><span>🇺🇸 Dólar</span> <strong id="preco-dolar">R$ 0,00</strong></div>
+            <div class="item-cambio"><span>🇵🇾 Guarani</span> <strong id="preco-guarani">R$ 0,00</strong></div>
+        </div>
+        <button onclick="atualizarCambio()" class="btn-acao">Atualizar</button>
+    </section>
+ 
+    <section id="login" class="tela">
+        <div class="login-container">
+            <h2>Acesse sua Conta</h2>
+            <form id="form-login" class="login-form">
+                <input type="email" placeholder="E-mail" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit" class="btn-acao">ENTRAR</button>
+            </form>
+        </div>
+    </section>
+</main>
+ 
+<footer>
+    <p>Fronteira Viva © 2026 | Ponta Porã - MS</p>
+    <p>Todos os direitos reservados.</p>
+</footer>
+ 
+<script src="{% static 'meusite/js/scriptshome.js' %}"></script>
+</body>
+</html>
