@@ -29,7 +29,30 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+import os
+from pathlib import Path
+ 
+BASE_DIR = Path(__file__).resolve().parent.parent
+ 
+# RT02 - Configuração MySQL
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'fronteira_viva_db',
+        'USER': 'root',
+        'PASSWORD': 'VoucherDev@2024',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+ 
+# Caminhos para fotos e áudios (RF07)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+ 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+ 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -73,12 +96,12 @@ WSGI_APPLICATION = 'fronteiraviva.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
