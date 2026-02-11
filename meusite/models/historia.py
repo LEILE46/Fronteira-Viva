@@ -10,6 +10,7 @@ class HistoriaColaborativa(models.Model):
 
     class Meta:
         verbose_name = "História dos Usuários"
+        verbose_name_plural = "Histórias dos Usuários"
         ordering = ['-data_envio']
 
     def __str__(self):

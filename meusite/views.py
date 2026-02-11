@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import PontoHistorico, HistoriaColaborativa, Cambio
@@ -14,17 +15,15 @@ def home(request):
         'roteiros': todos_pontos.filter(categoria='ROTEIRO'),
         'cambios': Cambio.objects.all().order_by('-melhor_cotacao'),
         'historias_usuarios': HistoriaColaborativa.objects.filter(aprovado=True),
-        'agricultura': todos_pontos.filter(categoria='AGRICULTURA'),
-        'trajetoria': todos_pontos.filter(categoria='TRAJETORIA'),
     }
     return render(request, 'home.html', context)
-
 
 def cadastro_view(request):
     if request.method == 'POST':
         nome = request.POST.get('username')
         email = request.POST.get('email')
         senha = request.POST.get('password')
+
 
         if User.objects.filter(username=nome).exists():
             messages.error(request, "Este nome de usuário já está em uso.")

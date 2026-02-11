@@ -17,7 +17,15 @@
             <h1>FRONTEIRA VIVA</h1>
         </div>
         <div class="header-right">
-            <div id="relogio" class="relogio-digital">00:00:00</div>
+            {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-header">Sair</button>
+                </form>
+            {% else %}
+                <button onclick="trocarTela('login')" class="btn-header">Login</button>
+                <button onclick="trocarTela('cadastro')" class="btn-header">Cadastrar</button>
+            {% endif %}
         </div>
     </div>
 
@@ -113,8 +121,9 @@
         <div class="tabela-cambio">
             <div class="item-cambio"><span>🇺🇸 Dólar</span> <strong id="preco-dolar">R$ 0,00</strong></div>
             <div class="item-cambio"><span>🇵🇾 Guarani</span> <strong id="preco-guarani">R$ 0,00</strong></div>
+            
+            <button onclick="atualizarCambio()" class="btn-acao">Atualizar</button>
         </div>
-        <button onclick="atualizarCambio()" class="btn-acao">Atualizar</button>
     </section>
 
     <section id="login" class="tela">
