@@ -7,10 +7,10 @@ from .models import PontoHistorico, HistoriaColaborativa, Cambio
 
 def home(request):
     todos_pontos = PontoHistorico.objects.all()
-    print(todos_pontos)
+    print(todos_pontos.filter(categoria='Historias'))
     context = {
-        'culturas': todos_pontos.filter(categoria='Culturas'),
-        'historias_locais': todos_pontos.filter(categoria='HISTORIA'),
+        'culturas': todos_pontos.filter(categoria='CULTURAS'),
+        'historias_locais': todos_pontos.filter(categoria='Historias'),
         'roteiros': todos_pontos.filter(categoria='ROTEIRO'),
         'cambios': Cambio.objects.all().order_by('-melhor_cotacao'),
         'historias_usuarios': HistoriaColaborativa.objects.filter(aprovado=True),

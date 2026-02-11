@@ -5,9 +5,8 @@ from django.db import models
 
 class PontoHistorico(models.Model):
     CATEGORIAS = (
-        ('Culturas', 'Culturas'),
-        ('TRAJETORIA', 'Trajetória '),
-        ('ROTEIRO', 'Roteiro Acessível (Idosos)'),
+        ('CULTURAS', 'Culturas'),
+        ('HISTORIAS', 'Historias'),
     )
     
     titulo = models.CharField(max_length=200, help_text="Ex: Soja ou As Raízes Indígenas")

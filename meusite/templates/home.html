@@ -13,7 +13,7 @@
     <div class="header-container">
         <div></div>
         <div class="logo-area">
-            <img src="{% static 'meusite/images/fronteira.png' %}" alt="Logo Fronteira Viva" class="site-logo">
+            <img src="{% static 'meusite/img/logo.png' %}" alt="Logo Fronteira Viva" class="site-logo">
             <h1>FRONTEIRA VIVA</h1>
         </div>
         <div class="header-right">
@@ -33,16 +33,16 @@
         {% else %}
             <button onclick="trocarTela('login')">Login</button>
         {% endif %}
+        <button onclick="trocarTela('mapa')">Mapa</button> 
     </nav>
 </header>
 
 <main>
     <section id="cultura" class="tela ativa">
-        <h2>Cultura e Agricultura Detalhada</h2>
+        <h2>Nossa Cultura: </h2>
         <div class="grid-cards">
             {% for p in culturas %}
-            <p>{{ culturas}}</p>
-                {% if p.categoria == 'Culturas' %}
+                {% if p.categoria == 'CULTURAS' %}
                 <div class="card">
                     {% if p.imagem %}
                         <img src="{{ p.imagem.url }}" alt="{{ p.titulo }}">
@@ -79,14 +79,14 @@
         <h2>Nossa Trajetória</h2>
         <p class="instrucao">Clique nos temas para ler a história detalhada:</p>
         <div class="lista-detalhada">
-            {% for h in historias_locais %}
-                {% if h.categoria == 'TRAJETORIA' %}
+            {% for historia in historias_locais %}
+                {% if historia.categoria == 'HISTORIAS' %}
                 <details>
-                    <summary>{{ h.titulo }}</summary>
+                    <summary>{{ historia.titulo }}</summary>
                     <div class="detalhe-conteudo">
-                        <p>{{ h.descricao|linebreaks }}</p>
+                        <p>{{ historia.descricao|linebreaks }}</p>
                         
-                        <button class="btn-ouvir" onclick="falarTexto('{{ h.titulo }}. {{ h.descricao|escapejs }}')">
+                        <button class="btn-ouvir" onclick="falarTexto('{{ historia.titulo }}. {{ historia.descricao|escapejs }}')">
                             🔊 Ouvir História
                         </button>
 
@@ -120,12 +120,19 @@
     <section id="login" class="tela">
         <div class="login-container">
             <h2>Acesse sua Conta</h2>
+            
             <form id="form-login" class="login-form" method="POST" action="{% url 'login' %}">
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="Usuário" required>
                 <input type="password" name="password" placeholder="Senha" required>
                 <button type="submit" class="btn-acao">ENTRAR</button>
             </form>
+        </div>
+    </section>
+    <section id="mapa" class="tela">
+        <h2>Veja o mapa de Ponta Porã com seus Pontos turisticos</h2>
+        <div class="grid-cards">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1Rp3Myi8X0a_MuJlkVfe1-cY2P3cfGn4&ehbc=2E312F&noprof=1&zoom=10&z=10&lat=-22.537994754692807&lng=-55.727664059157526 " width="840" height="480" class="mapa"></iframe>
         </div>
     </section>
 </main>
