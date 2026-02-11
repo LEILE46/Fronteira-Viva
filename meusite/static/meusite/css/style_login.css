@@ -1,46 +1,134 @@
-/* Estilos para as páginas de Login e Cadastro */
+/* ================= FUNDO ================= */
 .corpo-login {
-    background: #f4f4f4;
+    background: linear-gradient(135deg, #0d1b2a, #1b4f72); /* azul escuro para azul claro */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
 }
 
+/* ================= CARD ================= */
 .login-container {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 18px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     text-align: center;
+    animation: fadeIn 0.6s ease;
+    position: relative;
 }
 
+/* ================= LOGO ================= */
+.login-container img {
+    width: 200px;
+    margin-bottom: 1.5rem;
+}
+
+/* ================= TÍTULO ================= */
+.login-container h2 {
+    margin-bottom: 0.5rem;
+    color: #0d1b2a; /* azul escuro */
+}
+
+.login-container p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* ================= CAMPOS ================= */
 .campo {
     text-align: left;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .campo label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333; /* tom mais escuro */
+    font-size: 0.9rem;
 }
 
 .campo input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
 }
 
+/* Efeito focus moderno */
+.campo input:focus {
+    border-color: #1b4f72; /* azul claro */
+    box-shadow: 0 0 0 3px rgba(27, 79, 114, 0.2);
+    background: #ffffff;
+    outline: none;
+}
+
+/* ================= BOTÃO ================= */
+.btn-acao {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #1b4f72, #0d1b2a); /* gradiente azul claro → azul escuro */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-acao:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
+}
+
+/* ================= ALERTA ================= */
 .alerta-erro {
-    background: #ffcccc;
-    color: #cc0000;
-    padding: 10px;
-    border-radius: 5px;
+    background: #ffe5e5;
+    color: #c0392b;
+    padding: 12px;
+    border-radius: 8px;
     margin-bottom: 15px;
+    font-size: 0.85rem;
+    border-left: 4px solid #e74c3c;
+}
+
+/* ================= LINKS ================= */
+.links-ajuda {
+    margin-top: 18px;
+    font-size: 0.85rem;
+}
+
+.links-ajuda a {
+    color: #1b4f72; /* azul claro */
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.links-ajuda a:hover {
+    text-decoration: underline;
+}
+
+/* ================= ANIMAÇÃO ================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

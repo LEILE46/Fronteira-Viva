@@ -35,7 +35,7 @@ urlpatterns = [
 
     path('ponto/<int:pk>/', views.detalhe_ponto, name='detalhe_ponto'),
 
-    path('preferencias/', views.salvar_preferencias, name='salvar_preferencias'),
+
 
 ]
 
