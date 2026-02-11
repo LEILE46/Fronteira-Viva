@@ -46,6 +46,11 @@ header {
     justify-content: center;
     align-items: center;
 }
+.mapa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
  
 .site-logo {
     height: 140px;

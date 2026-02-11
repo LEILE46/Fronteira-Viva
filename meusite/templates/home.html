@@ -33,6 +33,7 @@
         {% else %}
             <button onclick="trocarTela('login')">Login</button>
         {% endif %}
+        <button onclick="trocarTela('mapa')">Mapa</button> 
     </nav>
 </header>
 
@@ -120,12 +121,19 @@
     <section id="login" class="tela">
         <div class="login-container">
             <h2>Acesse sua Conta</h2>
+            
             <form id="form-login" class="login-form" method="POST" action="{% url 'login' %}">
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="Usuário" required>
                 <input type="password" name="password" placeholder="Senha" required>
                 <button type="submit" class="btn-acao">ENTRAR</button>
             </form>
+        </div>
+    </section>
+    <section id="mapa" class="tela">
+        <h2>Veja o mapa de Ponta Porã com seus Pontos turisticos</h2>
+        <div class="grid-cards">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1Rp3Myi8X0a_MuJlkVfe1-cY2P3cfGn4&ehbc=2E312F&noprof=1&zoom=10&z=10&lat=-22.537994754692807&lng=-55.727664059157526 " width="840" height="480" class="mapa"></iframe>
         </div>
     </section>
 </main>
