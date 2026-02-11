@@ -13,11 +13,19 @@
     <div class="header-container">
         <div></div>
         <div class="logo-area">
-            <img src="{% static 'meusite/images/fronteira.png' %}" alt="Logo Fronteira Viva" class="site-logo">
+            <img src="{% static 'meusite/img/fronteira.png' %}" alt="Logo Fronteira Viva" class="site-logo">
             <h1>FRONTEIRA VIVA</h1>
         </div>
         <div class="header-right">
-            <div id="relogio" class="relogio-digital">00:00:00</div>
+            {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-header">Sair</button>
+                </form>
+            {% else %}
+                <button onclick="trocarTela('login')" class="btn-header">Login</button>
+                <button onclick="trocarTela('cadastro')" class="btn-header">Cadastrar</button>
+            {% endif %}
         </div>
     </div>
 
@@ -25,87 +33,84 @@
         <button onclick="trocarTela('cultura')">Cultura</button>
         <button onclick="trocarTela('historias')">História</button>
         <button onclick="trocarTela('cambio')">Câmbio</button>
-        {% if user.is_authenticated %}
-            <form action="{% url 'logout' %}" method="post" style="display: inline;">
-                {% csrf_token %}
-                <button type="submit">Sair</button>
-            </form>
-        {% else %}
-            <button onclick="trocarTela('login')">Login</button>
-        {% endif %}
+        <button onclick="trocarTela('contar-historia')">Contar História</button>
     </nav>
 </header>
 
 <main>
     <section id="cultura" class="tela ativa">
         <h2>Cultura e Agricultura Detalhada</h2>
-        <div class="grid-cards">
-            {% for p in culturas %}
-            <p>{{ culturas}}</p>
-                {% if p.categoria == 'Culturas' %}
-                <div class="card">
-                    {% if p.imagem %}
-                        <img src="{{ p.imagem.url }}" alt="{{ p.titulo }}">
-                    {% endif %}
-                    <div class="card-content">
-                        <h3>{{ p.titulo }}</h3>
-                        <div class="detalhes-agricolas">
-                            <p>{{ p.descricao|linebreaksbr }}</p>
-                        </div>
-                        
-                        <button class="btn-ouvir" onclick="falarTexto('{{ p.titulo }}. {{ p.descricao|escapejs }}')">
-                            🔊 Ouvir Texto
-                        </button>
-
-                        <div class="audio-acessibilidade">
-                            {% if p.audio_guia %}
-                                <p><strong>📁 Guia Gravado:</strong></p>
-                                <audio controls class="player-voz" style="width: 100%;">
-                                    <source src="{{ p.audio_guia.url }}" type="audio/mpeg">
-                                    Seu navegador não suporta o player de áudio.
-                                </audio>
-                            {% else %}
-                                <p class="sem-audio"><em>Áudio-guia gravado em breve...</em></p>
-                            {% endif %}
+        {% if user.is_authenticated %}
+            <div class="grid-cards">
+                {% for p in culturas %}
+                    {% if p.categoria == 'Culturas' %}
+                    <div class="card">
+                        {% if p.imagem %}
+                            <img src="{{ p.imagem.url }}" alt="{{ p.titulo }}">
+                        {% endif %}
+                        <div class="card-content">
+                            <h3>{{ p.titulo }}</h3>
+                            <div class="detalhes-agricolas">
+                                <p>{{ p.descricao|linebreaksbr }}</p>
+                            </div>
+                            <button class="btn-ouvir" onclick="falarTexto('{{ p.titulo }}. {{ p.descricao|escapejs }}')">
+                                🔊 Ouvir Texto
+                            </button>
+                            <div class="audio-acessibilidade">
+                                {% if p.audio_guia %}
+                                    <p><strong>📁 Guia Gravado:</strong></p>
+                                    <audio controls class="player-voz" style="width: 100%;">
+                                        <source src="{{ p.audio_guia.url }}" type="audio/mpeg">
+                                    </audio>
+                                {% else %}
+                                    <p class="sem-audio"><em>Áudio-guia gravado em breve...</em></p>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
-                </div>
-                {% endif %}
-            {% endfor %}
-        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="historia-container" style="max-width: 500px; margin-top: 30px;">
+                <p style="text-align:center; color:#555; margin-bottom: 25px;">
+                    Você precisa estar logado para visualizar os detalhes da nossa cultura e agricultura.
+                </p>
+                <button onclick="trocarTela('login')" class="btn-acao">Fazer Login</button>
+            </div>
+        {% endif %}
     </section>
 
     <section id="historias" class="tela">
         <h2>Nossa Trajetória</h2>
-        <p class="instrucao">Clique nos temas para ler a história detalhada:</p>
-        <div class="lista-detalhada">
-            {% for h in historias_locais %}
-                {% if h.categoria == 'TRAJETORIA' %}
-                <details>
-                    <summary>{{ h.titulo }}</summary>
-                    <div class="detalhe-conteudo">
-                        <p>{{ h.descricao|linebreaks }}</p>
-                        
-                        <button class="btn-ouvir" onclick="falarTexto('{{ h.titulo }}. {{ h.descricao|escapejs }}')">
-                            🔊 Ouvir História
-                        </button>
-
-                        {% if h.localizacao_url %}
-                            <a href="{{ h.localizacao_url }}" target="_blank" class="btn-mapa">📍 Ver no Google Maps</a>
-                        {% endif %}
-                        
-                        {% if h.audio_guia %}
-                            <div class="audio-acessibilidade" style="margin-top: 15px;">
-                                <audio controls style="width: 100%;">
-                                    <source src="{{ h.audio_guia.url }}" type="audio/mpeg">
-                                </audio>
-                            </div>
-                        {% endif %}
-                    </div>
-                </details>
-                {% endif %}
-            {% endfor %}
-        </div>
+        {% if user.is_authenticated %}
+            <p class="instrucao">Clique nos temas para ler a história detalhada:</p>
+            <div class="lista-detalhada">
+                {% for h in historias_locais %}
+                    {% if h.categoria == 'TRAJETORIA' %}
+                    <details>
+                        <summary>{{ h.titulo }}</summary>
+                        <div class="detalhe-conteudo">
+                            <p>{{ h.descricao|linebreaks }}</p>
+                            <button class="btn-ouvir" onclick="falarTexto('{{ h.titulo }}. {{ h.descricao|escapejs }}')">
+                                🔊 Ouvir História
+                            </button>
+                            {% if h.localizacao_url %}
+                                <a href="{{ h.localizacao_url }}" target="_blank" class="btn-mapa">📍 Ver no Google Maps</a>
+                            {% endif %}
+                        </div>
+                    </details>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="historia-container" style="max-width: 500px; margin-top: 30px;">
+                <p style="text-align:center; color:#555; margin-bottom: 25px;">
+                    Você precisa estar logado para ler as histórias da nossa fronteira.
+                </p>
+                <button onclick="trocarTela('login')" class="btn-acao">Fazer Login</button>
+            </div>
+        {% endif %}
     </section>
 
     <section id="cambio" class="tela">
@@ -113,8 +118,9 @@
         <div class="tabela-cambio">
             <div class="item-cambio"><span>🇺🇸 Dólar</span> <strong id="preco-dolar">R$ 0,00</strong></div>
             <div class="item-cambio"><span>🇵🇾 Guarani</span> <strong id="preco-guarani">R$ 0,00</strong></div>
+            
+            <button onclick="atualizarCambio()" class="btn-acao">Atualizar</button>
         </div>
-        <button onclick="atualizarCambio()" class="btn-acao">Atualizar</button>
     </section>
 
     <section id="login" class="tela">
@@ -126,6 +132,25 @@
                 <input type="password" name="password" placeholder="Senha" required>
                 <button type="submit" class="btn-acao">ENTRAR</button>
             </form>
+        </div>
+    </section>
+
+    <section id="contar-historia" class="tela">
+        <div class="historia-container">
+            <h2>Compartilhe sua História</h2>
+            {% if user.is_authenticated %}
+                <form id="form-historia" class="historia-form" method="POST" action="{% url 'publicar_historia' %}">
+                    {% csrf_token %}
+                    <input type="text" name="titulo" placeholder="Título da História" required>
+                    <textarea name="conteudo" placeholder="Escreva sua história aqui..." rows="6" required></textarea>
+                    <button type="submit" class="btn-acao">Enviar História</button>
+                </form>
+            {% else %}
+                <p style="text-align:center; color:#555; margin-bottom: 25px;">
+                    Você precisa estar logado para contar sua história.
+                </p>
+                <button onclick="trocarTela('login')" class="btn-acao">Fazer Login</button>
+            {% endif %}
         </div>
     </section>
 </main>
