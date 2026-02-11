@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import PontoHistorico, HistoriaColaborativa, Cambio
@@ -14,11 +15,8 @@ def home(request):
         'roteiros': todos_pontos.filter(categoria='ROTEIRO'),
         'cambios': Cambio.objects.all().order_by('-melhor_cotacao'),
         'historias_usuarios': HistoriaColaborativa.objects.filter(aprovado=True),
-        'agricultura': todos_pontos.filter(categoria='AGRICULTURA'),
-        'trajetoria': todos_pontos.filter(categoria='TRAJETORIA'),
     }
     return render(request, 'home.html', context)
-
 
 def cadastro_view(request):
     if request.method == 'POST':
@@ -26,18 +24,17 @@ def cadastro_view(request):
         email = request.POST.get('email')
         senha = request.POST.get('password')
 
+
         if User.objects.filter(username=nome).exists():
             messages.error(request, "Este nome de usuário já está em uso.")
-            return render(request, 'cadastro.html')
+            return render(request, 'cadastro.html')  # caminho correto
 
         user = User.objects.create_user(username=nome, email=email, password=senha)
         login(request, user)
-        
         messages.success(request, "Conta criada com sucesso! Bem-vindo ao Fronteira Viva.")
-        return redirect('home.html')  # redireciona após login
+        return redirect('home')  # nome da URL, não do template
 
     return render(request, 'cadastro.html')
-
 # ====== PUBLICAR HISTÓRIA ======
 @login_required
 def publicar_historia(request):
@@ -65,7 +62,7 @@ def detalhe_ponto(request, pk):
 # ====== LOGIN ======
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect('home.html')
+        return redirect('home')  
 
     if request.method == 'POST':
         usuario_post = request.POST.get('username')
@@ -76,10 +73,9 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, f"Bem-vindo de volta, {user.username}!")
-            return redirect('home.html')
+            return redirect('home') 
         else:
             messages.error(request, "Usuário ou senha incorretos. Tente novamente.")
-            return render(request, 'login.html')
 
     return render(request, 'login.html')
 
