@@ -8,10 +8,20 @@
 </head>
 <body class="corpo-login">
     <div class="login-container">
+        
         <img src="{% static 'meusite/img/logo.png' %}" alt="Logo" class="site-logo-pequena">
+
+     
         <h2>Criar Nova Conta</h2>
         <p>Cadastre-se para contar suas histórias da fronteira.</p>
-        
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alerta-erro">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+ 
         <form method="POST">
             {% csrf_token %}
             <div class="campo">
@@ -29,6 +39,7 @@
             <button type="submit" class="btn-acao">CADASTRAR</button>
         </form>
         
+
         <div class="links-ajuda">
             <p>Já tem uma conta? <a href="{% url 'login' %}">Entrar agora</a></p>
             <a href="{% url 'home' %}">Voltar para o Início</a>
