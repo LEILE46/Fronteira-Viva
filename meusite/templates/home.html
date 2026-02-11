@@ -23,8 +23,9 @@
                     <button type="submit" class="btn-header">Sair</button>
                 </form>
             {% else %}
-                <button onclick="trocarTela('login')" class="btn-header">Login</button>
-                <button onclick="trocarTela('cadastro')" class="btn-header">Cadastrar</button>
+                <a href="{% url 'Entrar' %}" class="btn-header">Entrar</a>
+                <a href="{% url 'cadastro' %}" class="btn-header">Cadastrar</a>
+
             {% endif %}
         </div>
     </div>
@@ -130,7 +131,7 @@
         <div class="login-container">
             <h2>Acesse sua Conta</h2>
             
-            <form id="form-login" class="login-form" method="POST" action="{% url 'login' %}">
+            <form id="form-login" class="login-form" method="POST" action="{% url 'Entrar' %}">
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="Usuário" required>
                 <input type="password" name="password" placeholder="Senha" required>
