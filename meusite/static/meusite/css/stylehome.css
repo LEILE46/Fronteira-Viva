@@ -29,7 +29,7 @@ header {
         rgba(0,0,0,0.45),
         rgba(0,0,0,0.45)
     ),
-    url("{% static 'meusite/img/header.jpg' %}") center / cover no-repeat;
+    url('../img/header.jpg' ) center / cover no-repeat;
     color: white;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
@@ -45,6 +45,21 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 14px 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.1)
+    );
+
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+.logo-area:hover {
+    transform: translateY(-2px) scale(1.02);
 }
 .mapa {
     display: flex;
