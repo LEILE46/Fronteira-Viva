@@ -13,7 +13,7 @@
     <div class="header-container">
         <div></div>
         <div class="logo-area">
-            <img src="{% static 'meusite/images/fronteira.png' %}" alt="Logo Fronteira Viva" class="site-logo">
+            <img src="{% static 'meusite/img/logo.png' %}" alt="Logo Fronteira Viva" class="site-logo">
             <h1>FRONTEIRA VIVA</h1>
         </div>
         <div class="header-right">
@@ -42,8 +42,7 @@
         <h2>Nossa Cultura: </h2>
         <div class="grid-cards">
             {% for p in culturas %}
-            <p>{{ culturas}}</p>
-                {% if p.categoria == 'Culturas' %}
+                {% if p.categoria == 'CULTURAS' %}
                 <div class="card">
                     {% if p.imagem %}
                         <img src="{{ p.imagem.url }}" alt="{{ p.titulo }}">
@@ -80,14 +79,14 @@
         <h2>Nossa Trajetória</h2>
         <p class="instrucao">Clique nos temas para ler a história detalhada:</p>
         <div class="lista-detalhada">
-            {% for h in historias_locais %}
-                {% if h.categoria == 'TRAJETORIA' %}
+            {% for historia in historias_locais %}
+                {% if historia.categoria == 'HISTORIAS' %}
                 <details>
-                    <summary>{{ h.titulo }}</summary>
+                    <summary>{{ historia.titulo }}</summary>
                     <div class="detalhe-conteudo">
-                        <p>{{ h.descricao|linebreaks }}</p>
+                        <p>{{ historia.descricao|linebreaks }}</p>
                         
-                        <button class="btn-ouvir" onclick="falarTexto('{{ h.titulo }}. {{ h.descricao|escapejs }}')">
+                        <button class="btn-ouvir" onclick="falarTexto('{{ historia.titulo }}. {{ historia.descricao|escapejs }}')">
                             🔊 Ouvir História
                         </button>
 
