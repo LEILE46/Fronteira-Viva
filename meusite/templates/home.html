@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,15 +8,18 @@
     <title>Fronteira Viva - Ponta Porã</title>
     <link rel="stylesheet" href="{% static 'meusite/css/stylehome.css' %}">
 </head>
+
 <body class="{% if user.is_authenticated and user.perfil.alto_contraste %}alto-contraste{% endif %}">
 
 <header>
     <div class="header-container">
         <div></div>
+
         <div class="logo-area">
             <img src="{% static 'meusite/img/logo.png' %}" alt="Logo Fronteira Viva" class="site-logo">
             <h1>FRONTEIRA VIVA</h1>
         </div>
+
         <div class="header-right">
             {% if user.is_authenticated %}
                 <form action="{% url 'logout' %}" method="post" style="display:inline;">
@@ -25,7 +29,6 @@
             {% else %}
                 <a href="{% url 'Entrar' %}" class="btn-header">Entrar</a>
                 <a href="{% url 'cadastro' %}" class="btn-header">Cadastrar</a>
-
             {% endif %}
         </div>
     </div>
@@ -34,21 +37,29 @@
         <button onclick="trocarTela('cultura')">Cultura</button>
         <button onclick="trocarTela('historias')">História</button>
         <button onclick="trocarTela('cambio')">Câmbio</button>
-        {% if user.is_authenticated %}
-            <form action="{% url 'logout' %}" method="post" style="display: inline;">
-                {% csrf_token %}
-                <button type="submit">Sair</button>
-            </form>
-        {% else %}
-            <button onclick="trocarTela('login')">Login</button>
-        {% endif %}
-        <button onclick="trocarTela('mapa')">Mapa</button> 
+        <button onclick="trocarTela('mapa')">Mapa</button>
+        <button onclick="trocarTela('contar-historia')">Contar História</button>
     </nav>
 </header>
 
+<!-- Mensagens (logout, login, sucesso, etc) -->
+{% if messages %}
+    <div class="mensagens-container">
+        {% for message in messages %}
+            <div class="mensagem {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
 <main>
-    <section id="cultura" class="tela ativa">
-        <h2>Nossa Cultura: </h2>
+
+<!-- CULTURA -->
+<section id="cultura" class="tela ativa">
+    <h2>Nossa Cultura:</h2>
+
+    {% if user.is_authenticated %}
         <div class="grid-cards">
             {% for p in culturas %}
                 {% if p.categoria == 'CULTURAS' %}
@@ -58,34 +69,37 @@
                     {% endif %}
                     <div class="card-content">
                         <h3>{{ p.titulo }}</h3>
-                        <div class="detalhes-agricolas">
-                            <p>{{ p.descricao|linebreaksbr }}</p>
-                        </div>
-                        
+                        <p>{{ p.descricao|linebreaksbr }}</p>
                         <button class="btn-ouvir" onclick="falarTexto('{{ p.titulo }}. {{ p.descricao|escapejs }}')">
                             🔊 Ouvir Texto
                         </button>
-
+                        {% if p.audio_guia %}
                         <div class="audio-acessibilidade">
-                            {% if p.audio_guia %}
-                                <p><strong>📁 Guia Gravado:</strong></p>
-                                <audio controls class="player-voz" style="width: 100%;">
-                                    <source src="{{ p.audio_guia.url }}" type="audio/mpeg">
-                                    Seu navegador não suporta o player de áudio.
-                                </audio>
-                            {% else %}
-                                <p class="sem-audio"><em>Áudio-guia gravado em breve...</em></p>
-                            {% endif %}
+                            <p><strong>📁 Guia Gravado:</strong></p>
+                            <audio controls style="width: 100%;">
+                                <source src="{{ p.audio_guia.url }}" type="audio/mpeg">
+                            </audio>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
                 {% endif %}
             {% endfor %}
         </div>
-    </section>
+    {% else %}
+        <div class="historia-container" style="max-width: 500px; margin-top: 30px;">
+            <p style="text-align:center; color:#555;">
+                Você precisa estar logado para visualizar os conteúdos culturais.
+            </p>
+        </div>
+    {% endif %}
+</section>
 
-    <section id="historias" class="tela">
-        <h2>Nossa Trajetória</h2>
+<!-- HISTÓRIAS -->
+<section id="historias" class="tela">
+    <h2>Nossa Trajetória</h2>
+
+    {% if user.is_authenticated %}
         <p class="instrucao">Clique nos temas para ler a história detalhada:</p>
         <div class="lista-detalhada">
             {% for historia in historias_locais %}
@@ -94,57 +108,82 @@
                     <summary>{{ historia.titulo }}</summary>
                     <div class="detalhe-conteudo">
                         <p>{{ historia.descricao|linebreaks }}</p>
-                        
                         <button class="btn-ouvir" onclick="falarTexto('{{ historia.titulo }}. {{ historia.descricao|escapejs }}')">
                             🔊 Ouvir História
                         </button>
-
-                        {% if h.localizacao_url %}
-                            <a href="{{ h.localizacao_url }}" target="_blank" class="btn-mapa">📍 Ver no Google Maps</a>
+                        {% if historia.localizacao_url %}
+                        <a href="{{ historia.localizacao_url }}" target="_blank" class="btn-mapa">📍 Ver no Google Maps</a>
                         {% endif %}
-                        
-                        {% if h.audio_guia %}
-                            <div class="audio-acessibilidade" style="margin-top: 15px;">
-                                <audio controls style="width: 100%;">
-                                    <source src="{{ h.audio_guia.url }}" type="audio/mpeg">
-                                </audio>
-                            </div>
+                        {% if historia.audio_guia %}
+                        <div class="audio-acessibilidade" style="margin-top: 15px;">
+                            <audio controls style="width: 100%;">
+                                <source src="{{ historia.audio_guia.url }}" type="audio/mpeg">
+                            </audio>
+                        </div>
                         {% endif %}
                     </div>
                 </details>
                 {% endif %}
             {% endfor %}
-        </div>
-    </section>
 
-    <section id="cambio" class="tela">
-        <h2>Câmbio na Fronteira</h2>
-        <div class="tabela-cambio">
-            <div class="item-cambio"><span>🇺🇸 Dólar</span> <strong id="preco-dolar">R$ 0,00</strong></div>
-            <div class="item-cambio"><span>🇵🇾 Guarani</span> <strong id="preco-guarani">R$ 0,00</strong></div>
-            
-            <button onclick="atualizarCambio()" class="btn-acao">Atualizar</button>
+            <!-- HISTÓRIAS DE USUÁRIOS APROVADAS -->
+            {% for historia in historias_usuarios %}
+            <details>
+                <summary>{{ historia.titulo }} (por {{ historia.autor.username }})</summary>
+                <div class="detalhe-conteudo">
+                    <p>{{ historia.conteudo|linebreaks }}</p>
+                </div>
+            </details>
+            {% endfor %}
         </div>
-    </section>
+    {% else %}
+        <div class="historia-container" style="max-width: 500px; margin-top: 30px;">
+            <p style="text-align:center; color:#555;">
+                Você precisa estar logado para ler as histórias da nossa fronteira.
+            </p>
+        </div>
+    {% endif %}
+</section>
 
-    <section id="login" class="tela">
-        <div class="login-container">
-            <h2>Acesse sua Conta</h2>
-            
-            <form id="form-login" class="login-form" method="POST" action="{% url 'Entrar' %}">
-                {% csrf_token %}
-                <input type="text" name="username" placeholder="Usuário" required>
-                <input type="password" name="password" placeholder="Senha" required>
-                <button type="submit" class="btn-acao">ENTRAR</button>
-            </form>
-        </div>
-    </section>
-    <section id="mapa" class="tela">
-        <h2>Veja o mapa de Ponta Porã com seus Pontos turisticos</h2>
-        <div class="grid-cards">
-            <iframe src="https://www.google.com/maps/d/embed?mid=1Rp3Myi8X0a_MuJlkVfe1-cY2P3cfGn4&ehbc=2E312F&noprof=1" width="1000" height="680" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </section>
+<!-- CÂMBIO -->
+<section id="cambio" class="tela">
+    <h2>Câmbio na Fronteira</h2>
+    <div class="tabela-cambio">
+        <div class="item-cambio"><span>🇺🇸 Dólar</span> <strong id="preco-dolar">R$ 0,00</strong></div>
+        <div class="item-cambio"><span>🇵🇾 Guarani</span> <strong id="preco-guarani">R$ 0,00</strong></div>
+        <button onclick="atualizarCambio()" class="btn-acao">Atualizar</button>
+    </div>
+</section>
+
+<!-- MAPA -->
+<section id="mapa" class="tela">
+    <h2>Veja o mapa de Ponta Porã com seus pontos turísticos</h2>
+    <div class="grid-cards">
+        <iframe src="https://www.google.com/maps/d/embed?mid=1Rp3Myi8X0a_MuJlkVfe1-cY2P3cfGn4&ehbc=2E312F&noprof=1"
+                width="1000" height="680" allowfullscreen loading="lazy">
+        </iframe>
+    </div>
+</section>
+
+<!-- CONTAR HISTÓRIA -->
+<section id="contar-historia" class="tela">
+    <div class="historia-container">
+        <h2>Compartilhe sua História</h2>
+        {% if user.is_authenticated %}
+        <form id="form-historia" class="historia-form" method="POST" action="{% url 'publicar_historia' %}">
+            {% csrf_token %}
+            <input type="text" name="titulo" placeholder="Título da História" required>
+            <textarea name="conteudo" placeholder="Escreva sua história aqui..." rows="6" required></textarea>
+            <button type="submit" class="btn-acao">Enviar História</button>
+        </form>
+        {% else %}
+        <p style="text-align:center; color:#555;">
+            Você precisa estar logado para contar sua história.
+        </p>
+        {% endif %}
+    </div>
+</section>
+
 </main>
 
 <footer>

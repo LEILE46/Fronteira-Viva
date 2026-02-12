@@ -27,14 +27,14 @@ def cadastro_view(request):
 
         if User.objects.filter(username=nome).exists():
             messages.error(request, "Este nome de usuário já está em uso.")
-            return render(request, 'cadastro.html')  # caminho correto
+            return render(request, 'cadastro')  # caminho correto
 
         user = User.objects.create_user(username=nome, email=email, password=senha)
         login(request, user)
         messages.success(request, "Conta criada com sucesso! Bem-vindo ao Fronteira Viva.")
         return redirect('home')  # nome da URL, não do template
 
-    return render(request, 'cadastro.html')
+    return render(request, 'cadastro')
 # ====== PUBLICAR HISTÓRIA ======
 @login_required
 def publicar_historia(request):
@@ -50,14 +50,11 @@ def publicar_historia(request):
         )
 
         messages.success(request, "História enviada! Aguardando aprovação.")
-        return render(request, 'publicar_sucesso.html')  # ou redirect para uma página de sucesso
+        return redirect('home')
 
-    return render(request, 'publicar_historia.html')
+    return redirect('home')
 
-# ====== DETALHE DO PONTO ======
-def detalhe_ponto(request, pk):
-    ponto = get_object_or_404(PontoHistorico, pk=pk)
-    return render(request, 'detalhe_ponto.html', {'ponto': ponto})
+
 
 # ====== LOGIN ======
 def login_view(request):
@@ -77,10 +74,10 @@ def login_view(request):
         else:
             messages.error(request, "Usuário ou senha incorretos. Tente novamente.")
 
-    return render(request, 'login.html')
+    return render(request, 'login')
 
 # ====== LOGOUT ======
 def logout_view(request):
     logout(request)
     messages.info(request, "Você saiu da sua conta.")
-    return redirect('home.html')
+    return redirect('home')
