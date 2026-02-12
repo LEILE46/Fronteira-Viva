@@ -21,8 +21,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-size: 28px;      /* Fonte base maior */
-    line-height: 2;       /* Maior espaçamento para leitura */
+    font-size: 28px;      
+    line-height: 2;     
 }
 
 /* ================= HEADER ================= */
