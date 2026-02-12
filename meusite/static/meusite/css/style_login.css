@@ -1,22 +1,24 @@
 /* ================= FUNDO ================= */
 .corpo-login {
-    background: linear-gradient(135deg, #0d1b2a, #1b4f72); /* azul escuro para azul claro */
+    background: linear-gradient(135deg, #0d1b2a, #1b4f72);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+    font-size: 32px;      /* fonte base bem maior */
+    line-height: 2.2;     /* espaçamento confortável */
 }
 
 /* ================= CARD ================= */
 .login-container {
     background: #ffffff;
-    padding: 2.5rem;
-    border-radius: 18px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    padding: 4rem;         /* muito mais espaçamento interno */
+    border-radius: 22px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
     width: 100%;
-    max-width: 420px;
+    max-width: 520px;      /* card maior */
     text-align: center;
     animation: fadeIn 0.6s ease;
     position: relative;
@@ -24,96 +26,97 @@
 
 /* ================= LOGO ================= */
 .login-container img {
-    width: 200px;
-    margin-bottom: 1.5rem;
+    width: 260px;          /* logo maior */
+    margin-bottom: 2rem;
 }
 
 /* ================= TÍTULO ================= */
 .login-container h2 {
-    margin-bottom: 0.5rem;
-    color: #0d1b2a; /* azul escuro */
+    margin-bottom: 1rem;
+    color: #0d1b2a;
+    font-size: 3rem;       /* título muito maior */
 }
 
 .login-container p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1.5rem;
+    font-size: 1.6rem;     /* texto descritivo maior */
+    color: #333;
+    margin-bottom: 2rem;
 }
 
 /* ================= CAMPOS ================= */
 .campo {
     text-align: left;
-    margin-bottom: 18px;
+    margin-bottom: 25px;
 }
 
 .campo label {
     display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    color: #333; /* tom mais escuro */
-    font-size: 0.9rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #333;
+    font-size: 1.5rem;     
 }
 
 .campo input {
     width: 100%;
-    padding: 12px;
+    padding: 20px;      
     border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 0.95rem;
+    border-radius: 15px;
+    font-size: 1.5rem;   
     transition: all 0.3s ease;
     background: #f9f9f9;
 }
 
 /* Efeito focus moderno */
 .campo input:focus {
-    border-color: #1b4f72; /* azul claro */
-    box-shadow: 0 0 0 3px rgba(27, 79, 114, 0.2);
+    border-color: #1b4f72;
+    box-shadow: 0 0 0 4px rgba(27, 79, 114, 0.25);
     background: #ffffff;
     outline: none;
 }
 
-/* ================= BOTÃO ================= */
+
 .btn-acao {
     width: 100%;
-    padding: 13px;
-    background: linear-gradient(135deg, #1b4f72, #0d1b2a); /* gradiente azul claro → azul escuro */
+    padding: 22px;          
+    background: linear-gradient(135deg, #1b4f72, #0d1b2a);
     color: white;
     border: none;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 1px;
+    border-radius: 15px;
+    font-size: 1.8rem;      
+    font-weight: 700;
+    letter-spacing: 1.5px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .btn-acao:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
     opacity: 0.95;
 }
 
-/* ================= ALERTA ================= */
+
 .alerta-erro {
     background: #ffe5e5;
     color: #c0392b;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-size: 0.85rem;
-    border-left: 4px solid #e74c3c;
+    padding: 20px;          
+    border-radius: 12px;
+    margin-bottom: 22px;
+    font-size: 1.4rem;       
+    border-left: 6px solid #e74c3c;
 }
 
-/* ================= LINKS ================= */
+
 .links-ajuda {
-    margin-top: 18px;
-    font-size: 0.85rem;
+    margin-top: 25px;
+    font-size: 1.4rem;       
 }
 
 .links-ajuda a {
-    color: #1b4f72; /* azul claro */
+    color: #1b4f72;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: 0.3s;
 }
 
@@ -125,7 +128,7 @@
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
