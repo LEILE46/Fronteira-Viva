@@ -76,7 +76,6 @@ def login_view(request):
 
     return render(request, 'login.html')
 
-# ====== LOGOUT ======
 def logout_view(request):
     logout(request)
     messages.info(request, "Você saiu da sua conta.")
