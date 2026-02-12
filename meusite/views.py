@@ -34,7 +34,7 @@ def cadastro_view(request):
         messages.success(request, "Conta criada com sucesso! Bem-vindo ao Fronteira Viva.")
         return redirect('home')  # nome da URL, não do template
 
-    return render(request, 'cadastro')
+    return render(request, 'cadastro.html')
 # ====== PUBLICAR HISTÓRIA ======
 @login_required
 def publicar_historia(request):
@@ -74,7 +74,7 @@ def login_view(request):
         else:
             messages.error(request, "Usuário ou senha incorretos. Tente novamente.")
 
-    return render(request, 'login')
+    return render(request, 'login.html')
 
 # ====== LOGOUT ======
 def logout_view(request):
