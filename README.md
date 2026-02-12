@@ -1,6 +1,6 @@
 # 🌐 Fronteira Viva
 
-O **Fronteira Viva** é um portal web de turismo focado na cidade de **Ponta Porã/MS**. O projeto foi desenhado especificamente para atender **idosos** e **turistas de compras**, unindo acessibilidade com informações práticas de utilidade pública.
+O **Fronteira Viva** é um portal web de turismo focado na cidade de **Ponta Porã/MS**. O projeto foi desenhado especificamente para atender **idosos** e **moradores**, unindo acessibilidade com informações práticas de utilidade pública.
 
 O site reúne cultura, história local, roteiros acessíveis e dados em tempo real para facilitar a experiência de quem visita a fronteira.
 
@@ -9,10 +9,10 @@ O site reúne cultura, história local, roteiros acessíveis e dados em tempo re
 ## ✨ Funcionalidades Principais
 
 - 🏛️ **Cultura e História:** Roteiros turísticos, pontos históricos, linha do tempo e eventos culturais.
-- 🛍️ **Turismo de Compras:** Informações em tempo real sobre a **fila da Receita Federal** e **cotação do dólar**.
-- ♿ **Acessibilidade:** Botões de ajuste de fonte, alto contraste e suporte a áudio.
+- 🛍️ **Turismo de Compras:** Informações em tempo real sobre a **cotação do dólar**.
+- ♿ **Acessibilidade:**  alto contraste e suporte a áudio.
 - 🗺️ **Mapa Interativo:** Localização visual dos pontos culturais.
-- 📝 **Avaliações:** Feedback dos usuários sobre os roteiros visitados.
+
 - 🔐 **Painel Administrativo:** Gestão de conteúdo, atualização de câmbio e monitoramento da fila.
 
 ---
