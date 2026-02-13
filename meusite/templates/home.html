@@ -133,6 +133,9 @@
                 <summary>{{ historia.titulo }} (por {{ historia.autor.username }})</summary>
                 <div class="detalhe-conteudo">
                     <p>{{ historia.conteudo|linebreaks }}</p>
+                    <button class="btn-ouvir" onclick="falarTexto('{{ historia.titulo }}. {{ historia.autor.username }}.{{historia.conteudo|escapejs }}')">
+                            🔊 Ouvir História
+                        </button>
                 </div>
             </details>
             {% endfor %}
