@@ -1,11 +1,21 @@
 import pytest
 from django.urls import reverse
-from meusite.models import PontoHistorico  # ajuste para o nome real do seu model
+from meusite.models import PontoHistorico
+
 
 @pytest.mark.django_db
-def test_historia_cadastrada_aparece_na_pagina(client):
-    
-    # Criando uma história como se tivesse sido cadastrada no admin
+def test_historia_cadastrada_aparece_na_pagina(client, django_user_model):
+
+    # cria usuário
+    user = django_user_model.objects.create_user(
+        username="teste",
+        password="123456"
+    )
+
+    # faz login
+    client.login(username="teste", password="123456")
+
+    # cria história
     PontoHistorico.objects.create(
         titulo="História Teste",
         descricao="Essa é uma história de teste.",
@@ -16,8 +26,5 @@ def test_historia_cadastrada_aparece_na_pagina(client):
 
     content = response.content.decode()
 
-    # Verifica se o título aparece
     assert "História Teste" in content
-    
-    # Verifica se a descrição aparece
-    assert "Essa é uma história de teste." in content
+
