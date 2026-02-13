@@ -30,7 +30,7 @@ header {
     background: linear-gradient(rgba(0, 45, 91, 0.85), rgba(0, 45, 91, 0.95)),
     url("{% static 'meusite/img/header.jpg' %}") center/cover no-repeat;
     color: white;
-    padding-top: 20px;
+    padding-top: 10px;
     position: relative;
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     border-bottom: 6px solid var(--accent);
@@ -42,16 +42,16 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 30px;
+    padding: 0 20px;
 }
 
 .logo-area {
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: 15px;
 }
 
 .site-logo {
-    height: 250px; /* logo maior */
+    height: 250px;
     width: auto;
     filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
     margin-bottom: 15px;
@@ -63,7 +63,7 @@ header {
 }
 
 .logo-area h1 {
-    font-size: 4rem; /* título grande */
+    font-size: 4rem;
     letter-spacing: 8px;
     font-weight: 900;
     text-transform: uppercase;
@@ -89,7 +89,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center; 
-    font-size: 1.5rem; /* botão grande */
+    font-size: 1.5rem;
     transition: all 0.3s ease;
     border: 1px solid rgba(255,255,255,0.3);
     background: var(--white);
@@ -126,7 +126,7 @@ header {
     color: var(--primary);
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 1.2rem; /* botão menu grande */
+    font-size: 1.2rem;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -154,7 +154,7 @@ header {
     box-shadow: var(--shadow);
     border-left: 8px solid var(--accent);
     transition: transform 0.2s;
-    font-size: 1.3rem; /* texto maior */
+    font-size: 1.3rem;
 }
 
 .item-cambio:hover {
@@ -196,7 +196,7 @@ main {
 h2 {
     margin-bottom: 40px;
     color: var(--primary);
-    font-size: 3rem; /* títulos grandes */
+    font-size: 3rem;
     text-align: center;
 }
 
@@ -226,7 +226,7 @@ h2 {
 
 .card-content {
     padding: 25px;
-    font-size: 1.3rem; /* texto dentro do card maior */
+    font-size: 1.3rem;
 }
 
 /* ================= LOGIN E HISTÓRIAS ================= */
@@ -258,7 +258,7 @@ input, textarea {
     border: none;
     border-radius: 12px;
     font-weight: bold;
-    font-size: 1.5rem; /* botão grande */
+    font-size: 1.5rem;
     cursor: pointer;
     transition: background 0.3s;
 }
@@ -278,37 +278,43 @@ footer {
 }
 
 /* ===== Seção Cultura ===== */
-#cultura .grid-cards .card {
-    border-left: 8px solid var(--primary);
-    transition: transform 0.3s, box-shadow 0.3s;
+/* ===================================== */
+/* ===== AJUSTE SOMENTE DOS CARDS ====== */
+/* ===================================== */
+
+#cultura .grid-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-#cultura .grid-cards .card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+#cultura .card {
+    width: 280px;          /* deixa menor */
+    min-height: auto;
 }
 
-#cultura .card h3 {
-    color: var(--dark);
-    font-size: 2rem;
-    margin-bottom: 15px;
+#cultura .card img {
+    height: 160px;         /* imagem menor */
+    object-fit: cover;
 }
 
-#cultura .card p {
-    font-size: 1.4rem;
-    color: var(--text);
-    line-height: 1.8;
+#cultura .card-content {
+    padding: 15px;
+    font-size: 0.95rem;    /* texto levemente menor */
 }
+
 
 #cultura .btn-ouvir {
-    background: var(--accent);
+    background-color: #2e577d;
     color: white;
-    font-weight: bold;
-    border-radius: 60px;
-    padding: 12px 20px;
-    margin-top: 15px;
-    transition: background 0.3s, transform 0.2s;
-    font-size: 1.3rem;
+    border: none;
+    padding: 6px 12px;        /* menor */
+    font-size: 0.85rem;       /* letra menor */
+    border-radius: 6px;       /* levemente menor */
+    cursor: pointer;
+    margin-top: 8px;
+    transition: 0.3s;
 }
 
 #cultura .btn-ouvir:hover {
@@ -317,10 +323,15 @@ footer {
 }
 
 /* ===== Seção Histórias ===== */
+#historias {
+    max-width: 800px;
+}
 #historias .lista-detalhada details {
     background: var(--white);
-    padding: 25px 30px;
-    margin-bottom: 20px;
+    padding: 14px 19px;
+    max-width: 800px;   /* controla a largura */
+    margin: 0 auto;    /* menor */
+    margin-bottom: 10px;
     border-radius: 16px;
     box-shadow: var(--shadow);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -333,26 +344,28 @@ footer {
 }
 
 #historias summary {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: var(--primary);
     cursor: pointer;
 }
 
 #historias .detalhe-conteudo p {
-    font-size: 1.4rem;
-    line-height: 1.8;
+    font-size: 1.05rem;
+    line-height: 1.6;
     color: var(--text);
     margin-top: 15px;
 }
 
 #historias .btn-ouvir, #historias .btn-mapa {
-    font-size: 1.3rem;
-    padding: 12px 20px;
+    font-size: 0.8rem;
+    padding: 6px 12px;
     border-radius: 60px;
     margin-top: 15px;
     font-weight: 700;
+    
 }
+
 
 #historias .btn-ouvir {
     background: var(--accent);
@@ -376,6 +389,29 @@ footer {
 #historias .btn-mapa:hover {
     background: var(--accent);
     transform: translateY(-3px);
+}
+/* ===== MAPA CENTRALIZADO ===== */
+/* ===================================== */
+
+/* ===================================== */
+/* ===== MAPA CENTRALIZADO CORRETAMENTE ===== */
+/* ===================================== */
+
+#mapa {
+    text-align: center;
+}
+
+#mapa .grid-cards {
+    display: block;          /* remove o grid só do mapa */
+}
+
+#mapa iframe {
+    display: block;
+    margin: 30px auto;       /* centraliza */
+    width: 90%;              /* ocupa 90% da tela */
+    max-width: 1100px;       /* limite máximo */
+    height: 600px;           /* altura ajustada */
+    border-radius: 12px;
 }
 
 /* ===== Áudio de acessibilidade ===== */
@@ -406,8 +442,104 @@ footer {
     background-color: #d4edda;
     color: #276e38;
 }
+
 @keyframes fadeOut {
     0% { opacity: 1; }
     80% { opacity: 1; }
     100% { opacity: 0; display: none; }
+}
+
+/* ================================================= */
+/* ===== REDUÇÃO APENAS DE LETRAS E BOTÕES ===== */
+/* ================================================= */
+
+body { font-size: 20px; }
+
+.logo-area h1 { font-size: 2.8rem; }
+
+.btn-header {
+    height: 45px;
+    min-width: 140px;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.menu button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+}
+
+.btn-acao {
+    font-size: 1rem;
+    padding: 14px;
+}
+
+.btn-ouvir,
+.btn-mapa {
+    font-size: 1rem;
+}
+
+h2 { font-size: 2rem; }
+
+.card-content,
+.item-cambio,
+.login-container,
+.historia-container,
+input,
+textarea {
+    font-size: 1rem;
+}
+/* ===================================== */
+/* ===== MENU RESPONSIVO REAL ===== */
+/* ===================================== */
+
+/* Desktop continua normal */
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 0;
+}
+
+/* ===================================== */
+/* ===== MOBILE ===== */
+/* ===================================== */
+
+@media (max-width: 768px) {
+
+    /* Logo e título centralizados */
+    .logo-area {
+        text-align: center;
+    }
+
+    .site-logo {
+        max-width: 150px;
+    }
+
+    .logo-area h1 {
+        font-size: 1.8rem;
+    }
+
+    /* Menu vira coluna */
+    .menu {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    /* Botões ocupam quase toda largura */
+    .menu button {
+        width: 90%;
+        max-width: 350px;
+        font-size: 0.9rem;
+        padding: 10px 0;
+    }
+
+    /* Botão sair menor */
+    .btn-header {
+        font-size: 0.8rem;
+        padding: 8px 15px;
+    }
 }

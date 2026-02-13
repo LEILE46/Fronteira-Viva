@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PontoHistorico, HistoriaColaborativa, Cambio, PerfilUsuario
+from .models import PontoHistorico, HistoriaColaborativa, PerfilUsuario
 
 @admin.register(HistoriaColaborativa)
 class HistoriaAdmin(admin.ModelAdmin):
@@ -39,8 +39,3 @@ class PerfilAdmin(admin.ModelAdmin):
     list_display = ('user', 'fonte_grande', 'alto_contraste')
     list_filter = ('fonte_grande', 'alto_contraste')
     search_fields = ('user__username', 'user__email')
-
-@admin.register(Cambio)
-class CambioAdmin(admin.ModelAdmin):
-    list_display = ('moeda', 'valor', 'ultima_atualizacao')
-    readonly_fields = ('ultima_atualizacao',)

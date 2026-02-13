@@ -4,16 +4,15 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import PontoHistorico, HistoriaColaborativa, Cambio
+from .models import PontoHistorico, HistoriaColaborativa
 
 def home(request):
     todos_pontos = PontoHistorico.objects.all()
-    print(todos_pontos.filter(categoria='Historias'))
+    print(todos_pontos.filter(categoria='HISTORIAS'))
     context = {
         'culturas': todos_pontos.filter(categoria='CULTURAS'),
-        'historias_locais': todos_pontos.filter(categoria='Historias'),
+        'historias_locais': todos_pontos.filter(categoria='HISTORIAS'),
         'roteiros': todos_pontos.filter(categoria='ROTEIRO'),
-        'cambios': Cambio.objects.all().order_by('-melhor_cotacao'),
         'historias_usuarios': HistoriaColaborativa.objects.filter(aprovado=True),
     }
     return render(request, 'home.html', context)
